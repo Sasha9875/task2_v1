@@ -1,5 +1,7 @@
 import os
 from settings import WORKING_DIRECTORY
+import sys
+
 
 def create_folder(folder_name):
     folder_path = os.path.join(WORKING_DIRECTORY, folder_name)
@@ -69,13 +71,68 @@ def rename_file(old_name, new_name):
     else:
         print("File not found.")
 
-# Example usage:
+def print_menu():
+    print("File Manager Menu:")
+    print("1. Create Folder")
+    print("2. Delete Folder")
+    print("3. Move to Folder")
+    print("4. Move Up")
+    print("5. Create File")
+    print("6. Write to File")
+    print("7. View File")
+    print("8. Delete File")
+    print("9. Copy File")
+    print("10. Move File")
+    print("11. Rename File")
+    print("0. Exit")
+
+def main():
+    while True:
+        print_menu()
+        choice = input("Enter your choice: ")
+        
+        if choice == "1":
+            folder_name = input("Enter folder name: ")
+            create_folder(folder_name)
+        elif choice == "2":
+            folder_name = input("Enter folder name: ")
+            delete_folder(folder_name)
+        elif choice == "3":
+            folder_name = input("Enter folder name: ")
+            move_to(folder_name)
+        elif choice == "4":
+            move_up()
+        elif choice == "5":
+            file_name = input("Enter file name: ")
+            create_file(file_name)
+        elif choice == "6":
+            file_name = input("Enter file name: ")
+            content = input("Enter content: ")
+            write_to_file(file_name, content)
+        elif choice == "7":
+            file_name = input("Enter file name: ")
+            view_file(file_name)
+        elif choice == "8":
+            file_name = input("Enter file name: ")
+            delete_file(file_name)
+        elif choice == "9":
+            file_name = input("Enter file name: ")
+            destination_folder = input("Enter destination folder: ")
+            copy_file(file_name, destination_folder)
+        elif choice == "10":
+            file_name = input("Enter file name: ")
+            destination_folder = input("Enter destination folder: ")
+            move_file(file_name, destination_folder)
+        elif choice == "11":
+            old_name = input("Enter old file name: ")
+            new_name = input("Enter new file name: ")
+            rename_file(old_name, new_name)
+        elif choice == "0":
+            print("Exiting...")
+            sys.exit()
+        else:
+            print("Invalid choice")
+
 if __name__ == "__main__":
-    create_folder("test_folder")
-    create_file("test.txt")
-    write_to_file("test.txt", "Hello, World!")
-    view_file("test.txt")
-    move_to("test_folder")
-    view_file("test.txt")
-    move_up()
-    delete_folder("test_folder")
+    main()
+
