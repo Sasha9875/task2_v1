@@ -5,7 +5,6 @@ import shutil
 import zipfile
 import psutil
 
-
 def create_folder(folder_name):
     folder_path = os.path.join(WORKING_DIRECTORY, folder_name)
     os.makedirs(folder_path, exist_ok=True)
